@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../components/NavBar';
 import BadgeCard from '../components/BadgeCard';
 import BadgeForm from '../components/BadgeForm'
 import './styles/BadgePage.css'
@@ -28,8 +27,7 @@ export default class BadgePage extends Component {
 
   render () {
     return (
-      <div>
-        <Navbar />
+      <React.Fragment>
         <div className="BadgePage__hero">
           <img className="img-fluid" src={ header } alt="Logo" />
         </div>
@@ -51,7 +49,7 @@ export default class BadgePage extends Component {
           </div>
 
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
