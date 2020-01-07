@@ -1,31 +1,51 @@
 import React, { Component } from 'react'
-import './styles/BadgesList.css';
+import { Link } from 'react-router-dom'
 
+import './styles/BadgesList.css';
 
 export default class BadgesList extends Component {
   render () {
-    return (
-      <div className="BadgesList">
-        <ul className="list-unstyled">
-          { this.props.badgesData.map((badge) => {
-            return (
-              <li key={ badge.id }>
-                <div className="BadgesListItem">
-                  <img
-                    className="BadgesListItem__avatar"
-                    src={ badge.avatarUrl }
-                    alt={ ` ${ badge.firstName } ${ badge.lastName }` } />
-                  <div>
-                    <strong> { badge.firstName } { badge.lastName }</strong>
-                    <p>@{ badge.twitter }</p>
-                    <p>{ badge.jobTitle }</p>
+    // there is no badges
+    if (this.props.badgesData !== undefined
+      && this.props.badgesData.length === 0) {
+      return (
+        <div>
+          <h3>No badges were found!</h3>
+          <Link className="btn btn-primary" to="/badges/new">
+            Create New Badge
+          </Link>
+        </div>
+      )
+    }
+    // if there are available badges
+    if (this.props.badgesData !== undefined) {
+      return (
+        <div className="BadgesList">
+          <ul className="list-unstyled">
+            { this.props.badgesData.map((badge) => {
+              return (
+                <li key={ badge.id }>
+                  <div className="BadgesListItem">
+                    <img
+                      className="BadgesListItem__avatar"
+                      src={ badge.avatarUrl }
+                      alt={ ` ${ badge.firstName } ${ badge.lastName }` } />
+                    <div>
+                      <strong> { badge.firstName } { badge.lastName }</strong>
+                      <p>@{ badge.twitter }</p>
+                      <p>{ badge.jobTitle }</p>
+                    </div>
                   </div>
-                </div>
-              </li>
-            )
-          }) }
-        </ul>
-      </div>
+                </li>
+              )
+            }) }
+          </ul>
+        </div>
+      )
+    }
+    // if list() is empty
+    return (
+      <div>empty call </div>
     )
   }
 }
