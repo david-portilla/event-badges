@@ -12,16 +12,16 @@ export default class BadgeForm extends Component {
   //   })
   // }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(this.props.formValues)
-  }
+  // handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   console.log(this.props.formValues)
+  // }
 
   render () {
     return (
       <div>
         <h1>New attendant form</h1>
-        <form>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>First name</label>
             <input onChange={ this.props.onChange } className="form-control" type="text"

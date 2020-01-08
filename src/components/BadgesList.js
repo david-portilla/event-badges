@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import './styles/BadgesList.css';
+import Gravatar from './Gravatar';
 
 export default class BadgesList extends Component {
   render () {
-    // there is no badges
+    // if there is no badges
     if (this.props.badgesData !== undefined
       && this.props.badgesData.length === 0) {
       return (
@@ -26,10 +27,10 @@ export default class BadgesList extends Component {
               return (
                 <li key={ badge.id }>
                   <div className="BadgesListItem">
-                    <img
+                    <Gravatar
                       className="BadgesListItem__avatar"
-                      src={ badge.avatarUrl }
-                      alt={ ` ${ badge.firstName } ${ badge.lastName }` } />
+                      email={ badge.email }
+                    />
                     <div>
                       <strong> { badge.firstName } { badge.lastName }</strong>
                       <p>@{ badge.twitter }</p>
