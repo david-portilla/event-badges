@@ -6,6 +6,7 @@ import confLogo from '../images/badge-header.svg'
 import BadgestList from '../components/BadgesList';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
+import MiniLoader from '../components/MiniLoader';
 import api from '../api'
 
 export default class Badges extends Component {
@@ -17,8 +18,12 @@ export default class Badges extends Component {
   }
 
   componentDidMount () {
-    console.log('componentDidMount')
     this.fetchData()
+    this.intervalId = setInterval(this.fetchData, 5000)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.intervalId)
   }
 
   fetchData = async () => {
@@ -32,14 +37,14 @@ export default class Badges extends Component {
   }
 
   render () {
-    if (this.state.loading === true) {
+    if (this.state.loading === true && !this.state.data) {
       // return 'Loading...'
-      return <PageLoading/>
+      return <PageLoading />
     }
 
     if (this.state.error) {
       // return `Error: ${this.state.error.message}`
-      return <PageError error={this.state.error}/>
+      return <PageError error={ this.state.error } />
     }
 
     return (
@@ -55,11 +60,14 @@ export default class Badges extends Component {
           <div className="Badges__buttons">
             <Link to="/badges/new" className="btn btn-primary">Add new badges </Link>
           </div>
+
           <div className="Badges__list">
             <div className="Badges__container">
               <BadgestList badgesData={ this.state.data } />
             </div>
           </div>
+
+          { this.state.loading && <MiniLoader /> }
 
         </div>
       </React.Fragment>
