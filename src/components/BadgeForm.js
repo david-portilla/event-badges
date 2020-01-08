@@ -21,7 +21,7 @@ export default class BadgeForm extends Component {
     return (
       <div>
         <h1>New attendant form</h1>
-        <form onSubmit={this.props.onSubmit}>
+        <form onSubmit={ this.props.onSubmit }>
           <div className="form-group">
             <label>First name</label>
             <input onChange={ this.props.onChange } className="form-control" type="text"
@@ -48,6 +48,11 @@ export default class BadgeForm extends Component {
               name="twitter" value={ this.props.formValues.twitter } />
           </div>
           <button onClick={ this.handleSubmit } className="btn btn-primary">Save</button>
+
+          { this.props.error && (
+            <p className="text-danger">{ this.props.error.message }</p>
+          ) }
+
         </form>
       </div>
     )
