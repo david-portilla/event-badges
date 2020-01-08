@@ -9,12 +9,12 @@ export default function NotFound () {
       <div className="Badges">
         <div className="Badges__hero">
           <div className="Badges__container">
-            <div class="card bg-dark text-center text-white">
-              <div class="card-body">
+            <div className="card bg-dark text-center text-white">
+              <div className="card-body">
                 <img className="Navbar__brand-logo mb-4" src={ logo } alt="Logo" />
-                <h2 class="alert-heading">404: Page Not Found</h2>
-                <p class="card-text">Hmmmm! It seems this page didn't exist</p>
-                <p class="card-text mt-5">Try another URL or</p>
+                <h2 className="alert-heading">404: Page Not Found</h2>
+                <p className="card-text">Hmmmm! It seems this page didn't exist</p>
+                <p className="card-text mt-5">Try another URL or</p>
                 <Link className="btn btn-primary" to="/">
                   <span className="font-weight-light">Go back to </span>
                   <span className="font-weight-bold">Homepage</span>
