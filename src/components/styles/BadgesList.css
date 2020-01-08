@@ -17,3 +17,7 @@
   width: 80px;
   height: 80px;
 }
+
+p {
+  margin: 0;
+}

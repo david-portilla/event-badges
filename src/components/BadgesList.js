@@ -26,17 +26,20 @@ export default class BadgesList extends Component {
             { this.props.badgesData.map((badge) => {
               return (
                 <li key={ badge.id }>
-                  <div className="BadgesListItem">
-                    <Gravatar
-                      className="BadgesListItem__avatar"
-                      email={ badge.email }
-                    />
-                    <div>
-                      <strong> { badge.firstName } { badge.lastName }</strong>
-                      <p>@{ badge.twitter }</p>
-                      <p>{ badge.jobTitle }</p>
+                  <Link className="text-reset text-decoration-none"
+                    to={ `/badges/${ badge.id }/edit` }>
+                    <div className="BadgesListItem">
+                      <Gravatar
+                        className="BadgesListItem__avatar"
+                        email={ badge.email }
+                      />
+                      <div>
+                        <strong> { badge.firstName } { badge.lastName }</strong>
+                        <p>@{ badge.twitter }</p>
+                        <p>{ badge.jobTitle }</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </li>
               )
             }) }
