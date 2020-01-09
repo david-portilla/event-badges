@@ -13,7 +13,7 @@ export default class BadgeCard extends Component {
           <img src={ confLogo } alt="Banner" />
         </div>
         <div className="Badge__section-name">
-          <Gravatar 
+          <Gravatar
             className="Badge__avatar"
             email={this.props.email}
             alt={this.props.email}
