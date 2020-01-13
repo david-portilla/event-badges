@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import { Link } from 'react-router-dom'
 import Badge from '../components/BadgeCard';
@@ -40,6 +41,10 @@ export default function BadgeDetails (props) {
             <div>
               <div>
                 <button className="btn btn-danger mb-4"> Delete this badge </button>
+                {/* onClick={this.openModal} */ }
+                { ReactDOM.createPortal(
+                  <h1>Este es el contenido del modal</h1>,
+                  document.getElementById('modal')) }
               </div>
             </div>
           </div>
